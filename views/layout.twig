@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+    <title>{{ title }}</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" type="text/css" href="fontawesome/css/all.css">
+    <script src="/javascripts/publicar.js"></script>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://cssgram-cssgram.netdna-ssl.com/cssgram.min.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  
+  </head>
+  <body>
+	<header class="menu_principal">
+		<div class="">
+			<span class="title_app ">< Minigram /></span>
+
+			<a href="{{urlPath}}" class="btn-entrar">{{buttom}}</a>
+		</div>
+	</header>
+
+  	
+    {% block body %}{% endblock %}
+  </body>
+</html>

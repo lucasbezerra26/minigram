@@ -1,0 +1,39 @@
+{% extends 'layout.twig' %}
+
+{% block body %}
+
+	<div class="feed">
+		
+
+
+		{% for pub in publicacoes %}
+
+			<div class="pub">
+
+				<div>
+					<a href="/perfil">
+						<img src="/uploads/1.jpg" class="foto_pessoa_feed">
+					</a>
+					<label class="nome_pessoa_feed">{{user.nome}} está em
+						<span class="local">{{pub.localizacao}}</span>
+					</label>
+				</div>
+ 						
+				</label>
+
+				<img class="{{pub.filtro}}" src="uploads/{{pub.foto}}" id="foto_pub" class="foto_pub">
+				
+				<label class="legenda">
+					<i class="fas fa-signature"></i>
+					{{pub.legenda}}
+				</label>
+
+			</div>
+			<hr>
+			<br>
+		{% endfor %}
+
+	</div>
+
+
+{% endblock %}

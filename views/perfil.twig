@@ -1,0 +1,26 @@
+{% extends 'layout.twig' %}
+
+{% block body %}
+		<div class="conteudo_pefil">
+		<div class="infos">
+			<div class="circle_img">
+				<img class="img_perfil" src="uploads/5.jpg">
+			</div>
+			<label class="nome_perfil">{{user.nome}}</label>
+		</div>
+		
+		<br>
+		
+		<hr>
+
+		<br>
+
+		<div class="publicacoes">
+			{% for pub in publicacoes%}
+			<img src="uploads/{{pub.foto}}" class="img_perfil_pub {{pub.filtro}}">
+			{% endfor %}
+
+		</div>
+
+	</div>
+{% endblock %}

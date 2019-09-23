@@ -1,0 +1,62 @@
+{% extends 'layout.twig' %}
+
+{% block body %}
+	<h2 class="titulo_login" id="txt_escolha">Escolha uma foto com apenas um clique!</h2>
+
+	<form method="post" class="form_login" enctype="multipart/form-data">
+
+
+		<div class="input_false_pub none" id="local_pub">
+			<div class="icon_input">
+				<i class="fas fa-globe-americas"></i>
+			</div>
+			<input type="text" class="input_username" name="local" placeholder="Onde você estava?" >
+		</div>
+
+
+		<img class="none" src="" id="image_preview" onclick="click_input_file()" ondblclick="set_filter_image()">
+
+
+		<div class="input_false_pub none" id="legenda_pub">
+			<div class="icon_input">
+				<i class="fas fa-font"></i>
+			</div>
+			<input type="text" class="input_username" name="legenda" placeholder="Legenda para esta foto" >
+		</div>
+
+
+		<div class="none" id="filtro">
+			<img src="" class="img_filtro inkwell" name="inkwell" onclick="set_filter(this.name)">
+			<img src="" class="img_filtro clarendon" name="clarendon" onclick="set_filter(this.name)">
+			<img src="" class="img_filtro earlybird" name="earlybird" onclick="set_filter(this.name)">
+			<img src="" class="img_filtro kelvin" name="kelvin" onclick="set_filter(this.name)">
+			<img src="" class="img_filtro maven" name="maven" onclick="set_filter(this.name)">
+			<img src="" class="img_filtro nashville" name="nashville" onclick="set_filter(this.name)">
+			<img src="" class="img_filtro toaster" name="toaster" onclick="set_filter(this.name)">
+			<img src="" class="img_filtro willow" name="willow" onclick="set_filter(this.name)">
+			<img src="" class="img_filtro valencia" name="valencia" onclick="set_filter(this.name)">
+			<img src="" class="img_filtro slumber" name="slumber" onclick="set_filter(this.name)">
+			<img src="" class="img_filtro 1977" name="1977" onclick="set_filter(this.name)">
+		</div>
+
+		<div class="none">
+			<input type="text" name="filtro" id="value_filter" class="none">
+		</div>
+		<div class="input_file_false" id="input_file_false" onclick="click_input_file()">
+			<i class="far fa-image"></i>
+
+			Selecione sua foto aqui
+
+		</div>
+
+
+		<div class="none">
+			<input type="file" id="fileImage" name="img" class="none" onchange="set_to_image()">
+		</div>
+
+
+
+		<button class="none" id="btn_pub" type="submit">Publicar</button>
+
+	</form>
+{% endblock %}

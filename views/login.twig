@@ -1,0 +1,31 @@
+{% extends 'layout.twig' %}
+
+{% block body %}
+	<h2 class="titulo_login">Vamos Lá</h2>
+	<form method="post" class="form_login">
+		<div class="input_false">
+			<div class="icon_input">
+				<i class="fas fa-user"></i>
+			</div>
+			<input type="text" class="input_username" name="username" placeholder="Nome de Usuário" >
+		</div>
+		<br>
+		<div class="input_false">
+			<div class="icon_input">
+				<i class="fas fa-unlock-alt"></i>
+			</div>
+			<input type="password" class="input_username" name="password" placeholder="Senha Segura" >
+		</div>
+
+		<br>
+
+		{% if errorMessage %}
+			<div class="error_message">
+				{{errorMessage}}
+			</div>
+		{% endif %}
+
+		<button type="submit" class="btn_login">Entrar</button>
+		<a class="btn_cadastrar" href="/cadastrar">Cadastre-se</a>
+	</form>
+{% endblock %}
