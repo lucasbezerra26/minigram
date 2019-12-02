@@ -22,8 +22,8 @@ async function connectToDB(req,res,next){
 	try{
 		router.db = await mysql.createConnection({
 			host:'localhost',
-			user:'minigram',
-			password:'123',
+			user:'root',
+			password:'Lucas123',
 			database:'meu_minigram'
 		})
 		console.log("CONNECTED...")
@@ -59,6 +59,7 @@ const redirectFeed = (req,res,next)=>{
 }
 
 // Methods GETs
+
 router.get('/',redirectLogin,(req,res)=>{
 	res.render('index')
 })
@@ -109,7 +110,6 @@ router.get('/logout',redirectLogin,(req,res)=>{
 })
 
 // Methods POST
-
 router.post('/cadastrar',async(req,res)=>{
 	const name  = req.body.name
 	const username  = req.body.username
@@ -172,4 +172,33 @@ router.post('/publicar',uploadFile.single('img'),async(req,res)=>{
 	}
 
 })
+
+router.post('/api/', uploadFile.single('img'),async(req,res)=>{
+	const local = req.body.location
+	const legenda = req.body.subtitle
+	const filtro = req.body.filtro
+
+	// console.log(req.file)
+	const fileNameImage = req.file.filename
+	const instagram = req.body.instagram
+	// console.log(instagram)
+	// console.log("local:", local, "legenda", legenda, "filtro", filtro, "fileNameImage", fileNameImage)
+
+	try{
+
+		const [user, col] = await router.db.execute(`SELECT * FROM usuarios WHERE username=?`, [instagram])
+		console.log(user)
+
+
+		await router.db.execute(`INSERT INTO publicacoes(
+			localizacao, legenda,filtro,foto,usuario) VALUES(?,?,?,?,?)`,[local , legenda , filtro , fileNameImage , user[0].id])
+
+		res.status(200).send({'status': 'ok'})
+	}catch(error){
+		res.status(400).send({'status': 'error'})
+		console.log(error)
+	}
+
+})
+
 module.exports = router;
